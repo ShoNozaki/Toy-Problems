@@ -10,12 +10,14 @@
 //then subtract and try again
 
 const isFactor = (arr, factor) => {
-	for (let i = 0; i < arr.length; i++) {
-		if (arr[i] % factor !== 0) {
-			return false;
-		}
-	}
-	return true;
+	// for (let i = 0; i < arr.length; i++) {
+	// 	if (arr[i] % factor !== 0) {
+	// 		return false;
+	// 	}
+	// }
+	// return true;
+
+	return arr.every(value => value % factor === 0);
 };
 
 const greatestCommonFactor = (input) => {
