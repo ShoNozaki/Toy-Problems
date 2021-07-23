@@ -29,9 +29,10 @@
 
 const toRange = (input : number[]):string => {
 	let output = ""
-	const sorted = input.sort()
+	const sorted = input.sort((a,b) => a - b)
 	let hasStarted = false
 	for(let i = 0; i <= sorted.length; i++){
+		// console.log(output)
 		let current = sorted[i];
 		let last = sorted[i - 1];
 		let isConsecutive = current - last === 1;
@@ -76,5 +77,5 @@ const toRange = (input : number[]):string => {
 
 }
 
-// console.log(toRange([1,2,2,3,4,4,5,9,9])) // => "1_5,9"
+console.log(toRange([1,2,2,3,4,4,5,9,9,10])) // => "1_5,9"
 // console.log(toRange([6])) // => "6"
