@@ -77,5 +77,42 @@ const toRange = (input : number[]):string => {
 
 }
 
-console.log(toRange([1,2,2,3,4,4,5,9,9,10])) // => "1_5,9"
+// console.log(toRange([1,2,2,3,4,4,5,9,9,10])) // => "1_5,9_10"
 // console.log(toRange([6])) // => "6"
+
+
+//split string by ","
+//loop
+//if string.length > 1 get range
+//eles push number
+
+const getArrayFromRange = (start: number, end: number) : number[] => {
+	let output = [];
+	for(let i = start; i <= end; i ++){
+		output.push(i)
+	}
+	return output;
+}
+
+// console.log(getArrayFromRange(5,9))
+
+const toArray = (input: string) : number[] => {
+
+	const strings = input.split(",")
+	const output = strings.reduce((acc, range) => {
+		if(range.includes("_")){
+			let [start, end] = range.split("_");
+			let newRange = getArrayFromRange(parseInt(start), parseInt(end));
+			return [...acc, ...newRange];
+		} else {
+			return [...acc, parseInt(range)]
+		}
+
+	}, [] as number[])
+
+
+
+	return output
+}
+
+console.log(toArray("1_5,7,9_10,13"))
