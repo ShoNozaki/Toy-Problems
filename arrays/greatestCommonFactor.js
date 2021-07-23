@@ -21,7 +21,7 @@ const isFactor = (arr, factor) => {
 };
 
 const greatestCommonFactor = (input) => {
-	let lowToHigh = input.sort();
+	let lowToHigh = input.sort();touch 
 	let smallest = lowToHigh[0];
 	while (smallest > 0) {
 		if (isFactor(lowToHigh, smallest)) {
