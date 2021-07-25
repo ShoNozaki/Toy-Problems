@@ -66,7 +66,9 @@ const letterTable = {
 	"X": 7,
 	"Y": 8,
 	"Z": 9
-}
+};
+
+const weights = [8,7,6,5,4,3,2,10,0,9,8,7,6,5,4,3,2];
 
 const isValidVin = (input: string): boolean => {
 	if(input.length !== 17){
