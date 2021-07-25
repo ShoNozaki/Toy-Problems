@@ -97,6 +97,9 @@ const getArrayFromRange = (start: number, end: number) : number[] => {
 // console.log(getArrayFromRange(5,9))
 
 const toArray = (input: string) : number[] => {
+	if(input === "") {
+		return []
+	}
 
 	const strings = input.split(",")
 	const output = strings.reduce((acc, range) => {
