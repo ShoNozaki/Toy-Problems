@@ -72,7 +72,7 @@ const letterTable: LetterTable = {
 	"Z": 9
 };
 
-const weights = [8,7,6,5,4,3,2,10,0,9,8,7,6,5,4,3,2];
+const weightTable = [8,7,6,5,4,3,2,10,0,9,8,7,6,5,4,3,2];
 
 const decode = (input: string) : number | boolean  => {
 	const numCheck = parseInt(input)
@@ -99,15 +99,19 @@ const isValidVin = (input: string): boolean => {
 	const decoded = vin.map((char) => {
 		return decode(char)
 	})
+	console.log(decoded)
 	//check for invalid charachters
 	if(decoded.indexOf(false) >= 0){
 		return false
 	}
-
 	//WEIGHTS
-
-	//PRODUCT
-
+	const weights = decoded.map((value, i) => {
+		if(typeof(value) === "number"){
+			return value * weightTable[i]
+		} else {
+			return 0
+		}
+	})
 	//SUM
 
 	//MODULUS
@@ -117,3 +121,5 @@ const isValidVin = (input: string): boolean => {
 
 	return true
 }
+
+console.log(isValidVin("5YJ3E1EA7HF000337"))
