@@ -99,7 +99,7 @@ const isValidVin = (input: string): boolean => {
 	const decoded = vin.map((char) => {
 		return decode(char)
 	})
-	console.log(decoded)
+	// console.log(decoded)
 	//check for invalid charachters
 	if(decoded.indexOf(false) >= 0){
 		return false
@@ -112,18 +112,23 @@ const isValidVin = (input: string): boolean => {
 			return 0
 		}
 	})
-	console.log(weights)
+	// console.log(weights)
 	//SUM
 	const sum = weights.reduce((acc, value) => {
 		return acc + value
 	})
-	console.log(sum)
+	// console.log(sum)
 	//MODULUS
-
+	const mod = sum % 11
 	//CHECK 9th CHAR
-
-
-	return true
+	if(decoded[8] === mod){
+		return true
+	}
+	return false
 }
 
-console.log(isValidVin("5YJ3E1EA7HF000337"))
+console.log(isValidVin("5YJ3E1EA7HF000337")) // -> true
+console.log(isValidVin("5YJ3E1EA7HF00033")) // -> false not long enough
+console.log(isValidVin("IYJ3E1EA7HF000337")) // -> false invalid char
+console.log(isValidVin("!YJ3E1EA7HF000337")) // -> false invalid char
+console.log(isValidVin("5YJ3E1EA8HF000337")) // -> false 9th char is dif
