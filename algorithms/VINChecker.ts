@@ -42,7 +42,11 @@
 // 5YJ3E1EAXHF000347 is a valid VIN.
 // Input Validation : VINs with lenghts different than 17 characters or containing invalid characters should return False as well.
 
-const letterTable = {
+interface LetterTable {
+	[index: string]: number
+}
+
+const letterTable: LetterTable = {
 	"A": 1,
 	"B": 2,
 	"C": 3,
@@ -70,10 +74,45 @@ const letterTable = {
 
 const weights = [8,7,6,5,4,3,2,10,0,9,8,7,6,5,4,3,2];
 
+const decode = (input: string) : number | boolean  => {
+	const numCheck = parseInt(input)
+	if(!isNaN(numCheck)){
+		return numCheck;
+	}
+	const letterCheck = letterTable[input];
+	if(!isNaN(letterCheck)){
+		return letterCheck;
+	}
+	return false
+}
+
+// console.log(decode("5"))
+
 const isValidVin = (input: string): boolean => {
+	//check for length
 	if(input.length !== 17){
 		return false
 	}
+	//VIN
+	const vin = input.split("")
+	//DECODED
+	const decoded = vin.map((char) => {
+		return decode(char)
+	})
+	//check for invalid charachters
+	if(decoded.indexOf(false) >= 0){
+		return false
+	}
+
+	//WEIGHTS
+
+	//PRODUCT
+
+	//SUM
+
+	//MODULUS
+
+	//CHECK 9th CHAR
 
 
 	return true
