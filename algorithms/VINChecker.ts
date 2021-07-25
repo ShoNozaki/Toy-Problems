@@ -112,8 +112,12 @@ const isValidVin = (input: string): boolean => {
 			return 0
 		}
 	})
+	console.log(weights)
 	//SUM
-
+	const sum = weights.reduce((acc, value) => {
+		return acc + value
+	})
+	console.log(sum)
 	//MODULUS
 
 	//CHECK 9th CHAR
