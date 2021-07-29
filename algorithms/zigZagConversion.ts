@@ -37,13 +37,41 @@
 // s consists of English letters (lower-case and upper-case), ',' and '.'.
 // 1 <= numRows <= 1000
 
+//make array of rows
+//add letter to each row
+//flip direction
+
+type Direction = "Down" | "Up"
+
 type Row = string[]
 
 function convert(s: string, numRows: number): string {
-  let output = "";
+  if(numRows === 1){
+    return s
+  }
+  let direction: Direction = "Up"
+  let currentRow = 0;
   let rows = [] as Row[]
   rows.fill([], 0, numRows)
   console.log(rows)
+  for(let i = 0; i < s.length; i ++){
+    rows[currentRow].push(s[i]);
+    if(currentRow === 0){
+      direction = "Down";
+      currentRow += 1;
+    } else if(currentRow === numRows - 1){
+      direction = "Up";
+      currentRow -= 1;
+    } else if(direction === "Down"){
+      currentRow += 1
+    } else if(direction === "Up"){
+      currentRow -= 1
+    }
+  }
+
+  const output = rows.reduce((acc,val )=> {
+    return acc.concat(val)
+  }).join("")
 
   return output
 };
