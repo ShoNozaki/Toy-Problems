@@ -37,8 +37,13 @@
 // s consists of English letters (lower-case and upper-case), ',' and '.'.
 // 1 <= numRows <= 1000
 
+type Row = string[]
+
 function convert(s: string, numRows: number): string {
   let output = "";
+  let rows = [] as Row[]
+  rows.fill([], 0, numRows)
+  console.log(rows)
 
   return output
 };
