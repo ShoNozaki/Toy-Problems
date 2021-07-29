@@ -51,11 +51,13 @@ function convert(s: string, numRows: number): string {
   }
   let direction: Direction = "Up"
   let currentRow = 0;
-  let rows = [] as Row[]
-  rows.fill([], 0, numRows)
-  console.log(rows)
+  let rows = []
   for(let i = 0; i < s.length; i ++){
-    rows[currentRow].push(s[i]);
+    if(rows[currentRow] === undefined){
+      rows[currentRow] = [s[i]]
+    } else {
+      rows[currentRow].push(s[i]);
+    }
     if(currentRow === 0){
       direction = "Down";
       currentRow += 1;
