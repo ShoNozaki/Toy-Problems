@@ -33,14 +33,40 @@
 //if it matches mark as potential and remove from wishlist
 //return potentials
 
-const guessGifts = (wishlist: string[], presents: string []) : string[] => {
-	let potentialGifts = [] as string[]
+interface Present {
+	size: "small" | "medium" | "large"
+	clatters: "no" | "a bit" | "yes"
+	weight: "light" | "medium" | "heavy"
+}
+
+interface WishListItem extends Present {
+	name: string
+}
+
+const isMatch = (item1: Present, item2: WishListItem) : boolean =>  {
+	//check size
+	if(item1.size !== item2.size){
+		return false
+	}
+	//check clatters
+	if(item1.clatters !== item2.clatters){
+		return false
+	}
+	//check weight
+	if(item1.weight !== item2.weight){
+		return false
+	}
+	return true
+}
+
+const guessGifts = (wishlist: WishListItem[], presents: Present[]) : string[] => {
+	let potentialGifts = []
 	for(let i = 0; i < presents.length; i++){
 		let currentPresent = presents[i]
 		for(let j = 0; j < wishlist.length; j++){
 			let currentListItem = wishlist[j]
 			if(isMatch(currentPresent, currentListItem)){
-				potentialGifts.push(currentListItem)
+				potentialGifts.push(currentListItem.name)
 				wishlist.splice(j,1)
 				j -= 1; 
 			}
@@ -49,3 +75,16 @@ const guessGifts = (wishlist: string[], presents: string []) : string[] => {
 
 	return potentialGifts
 }
+
+var wishlist : WishListItem[] = [
+	{name: "Mini Puzzle", size: "small", clatters: "yes", weight: "light"},
+	{name: "Toy Car", size: "medium", clatters: "a bit", weight: "medium"},
+	{name: "Card Game", size: "small", clatters: "no", weight: "light"}
+]
+
+var presents : Present[] = [
+	{size: "medium", clatters: "a bit", weight: "medium"},
+	{size: "small", clatters: "yes", weight: "light"}
+];
+
+console.log(guessGifts(wishlist, presents))
