@@ -26,6 +26,28 @@
 // Constraints:
 // -231 <= x <= 231 - 1
 
-const isPalindrome = (x: number) : boolean {
-	
+
+//PSUEDO
+//convert to string
+//loop from end
+//compare pointers
+const isPalindrome = (x: number) : boolean => {
+	const s = x + "";
+	const mid = Math.ceil(s.length / 2)
+	let start = 0;
+	let end = s.length - 1;
+	while(start <= end){
+		if(s[start] !== s[end]){
+			return false
+		}
+		start += 1;
+		end -= 1;
+	}
+	return true
 }
+
+console.log(isPalindrome(-121))
+console.log(isPalindrome(121))
+console.log(isPalindrome(1221))
+console.log(isPalindrome(11121))
+
