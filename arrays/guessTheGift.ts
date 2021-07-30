@@ -13,6 +13,7 @@
 // Don't add any item more than once to the result
 // The order of names in the output doesn't matter
 // It's possible, that multiple items from your wish list have the same attribute values. If they match the attributes of one of the presents, add all of them.
+
 // Example
 // var wishlist = [
 //     {name: "Mini Puzzle", size: "small", clatters: "yes", weight: "light"},
@@ -27,8 +28,24 @@
 
 // guessGifts(wishlist, presents); // -->  ["Toy Car", "Mini Puzzle"]
 
+//PSUEDO
+// take each present and compare it to the wishlist
+//if it matches mark as potential and remove from wishlist
+//return potentials
+
 const guessGifts = (wishlist: string[], presents: string []) : string[] => {
 	let potentialGifts = [] as string[]
+	for(let i = 0; i < presents.length; i++){
+		let currentPresent = presents[i]
+		for(let j = 0; j < wishlist.length; j++){
+			let currentListItem = wishlist[j]
+			if(isMatch(currentPresent, currentListItem)){
+				potentialGifts.push(currentListItem)
+				wishlist.splice(j,1)
+				j -= 1; 
+			}
+		}
+	}
 
 	return potentialGifts
 }
