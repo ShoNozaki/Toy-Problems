@@ -5,9 +5,14 @@
 const getSum = (limit: number) : number => {
 	let output = 0;
 
-	return output
+	for(let i = 1; i < limit; i++){
+		if(i % 5 === 0 || i % 3 === 0){
+			output += i
+		}
+	}
 
+	return output
 }
 
 console.log(getSum(10)) // -> 23
-// console.log(getSum(1000))
+console.log(getSum(1000))
