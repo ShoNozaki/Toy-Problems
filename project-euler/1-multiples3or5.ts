@@ -2,3 +2,12 @@
 // The sum of these multiples is 23.
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
+const getSum = (limit: number) : number => {
+	let output = 0;
+
+	return output
+
+}
+
+console.log(getSum(10)) // -> 23
+// console.log(getSum(1000))
